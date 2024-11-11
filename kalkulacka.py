@@ -9,6 +9,9 @@ elif znamenko == "-":
 elif znamenko == "*":
     print(f"soucin cisel {prvni_cislo} a {druhe_cislo} je {prvni_cislo * druhe_cislo}")
 elif znamenko == "/":
-    print(f"podil cisel {prvni_cislo} a {druhe_cislo} je {prvni_cislo / druhe_cislo}")
+    if druhe_cislo != 0:
+        print(f"podil cisel {prvni_cislo} a {druhe_cislo} je {prvni_cislo / druhe_cislo}")
+    else:
+        print("nulou nelze delit")
 else:
     print(f"zvolil jsi chybnou operaci, program bude ukoncen")
