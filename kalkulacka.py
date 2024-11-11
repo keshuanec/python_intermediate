@@ -1,6 +1,20 @@
-prvni_cislo = int(input("vloz prvni cislo: "))
-znamenko = input("vloz znak pozadovane matematicke operace (+, -, *, /): ")
-druhe_cislo = int(input("vloz druhe coslo: "))
+try:
+    prvni_cislo = int(input("vloz prvni cislo: "))
+except(ValueError):
+    print("vlozil jsi chybnou hodnotu, bude pouzito '1'")
+    prvni_cislo = 1
+
+try:
+    znamenko = input("vloz znak pozadovane matematicke operace (+, -, *, /): ")
+except(ValueError):
+    print("zvolil jsi chybne matematickou operaci, bude pouzito '+'")
+    znamenko = "+"
+
+try:
+    druhe_cislo = int(input("vloz druhe coslo: "))
+except(ValueError):
+    print("vlozil jsi chybnou hodnotu, bude pouzito '1'")
+    druhe_cislo = 1
 
 if znamenko == "+":
     print(f"soucet cisel {prvni_cislo} a {druhe_cislo} je {prvni_cislo + druhe_cislo}")
@@ -9,9 +23,9 @@ elif znamenko == "-":
 elif znamenko == "*":
     print(f"soucin cisel {prvni_cislo} a {druhe_cislo} je {prvni_cislo * druhe_cislo}")
 elif znamenko == "/":
-    if druhe_cislo != 0:
+    try:
         print(f"podil cisel {prvni_cislo} a {druhe_cislo} je {prvni_cislo / druhe_cislo}")
-    else:
-        print("nulou nelze delit")
+    except (ZeroDivisionError):
+        print("chces delit nulou a to nejde")
 else:
     print(f"zvolil jsi chybnou operaci, program bude ukoncen")
