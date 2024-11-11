@@ -4,11 +4,10 @@ except(ValueError):
     print("vlozil jsi chybnou hodnotu, bude pouzito '1'")
     prvni_cislo = 1
 
-try:
-    znamenko = input("vloz znak pozadovane matematicke operace (+, -, *, /): ")
-except(ValueError):
-    print("zvolil jsi chybne matematickou operaci, bude pouzito '+'")
-    znamenko = "+"
+
+znamenko = input("vloz znak pozadovane matematicke operace (+, -, *, /): ")
+if znamenko not in ["+", "-", "*", "/"]:
+    raise ValueError("zvolil jsi chybne matematickou operaci a program bude ukoncen")
 
 try:
     druhe_cislo = int(input("vloz druhe coslo: "))
