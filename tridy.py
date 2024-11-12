@@ -1,8 +1,16 @@
 class Animals:
+    total_weight = 0
     def __init__(self, species: str, weight: int, age: int):
         self.species = species
         self.weight = weight
         self.age = age
+        Animals.total_weight += self.weight
+
+    def set_weight(self):
+        Animals.total_weight -= self.weight
+        self.weight = int(input("zadejte aktualni vahu zvirete zaokrouhlenou na jednotky kg:"))
+        Animals.total_weight += self.weight
+
 
     def look(self):
         print(f"to je ale hezke {self.species}")
@@ -13,6 +21,7 @@ class Animals:
 class Mammal(Animals):
     def run(self):
         print(f"utikej {self.species}")
+
 
 class Bird(Animals):
     def fly(self):
@@ -40,8 +49,15 @@ class Pso_Ryba(Fish, Domestic_dog):
 podivnost = Pso_Ryba("divnej",56, 22, "kokr", "ruzovy")
 
 
+vrabec = Bird("vrabec", 155, 2)
+velryba = Mammal("keporkak", 1252, 58)
 podivnost.print_info()
 print(podivnost)
+
+print(Animals.total_weight)
+velryba.set_weight()
+print(Animals.total_weight)
+
 
 #
 #
