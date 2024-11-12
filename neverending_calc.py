@@ -40,3 +40,4 @@ def neverending_calc():
 
 
     print(vysledek)
+    print("koko")
