@@ -1,10 +1,12 @@
 class Animals:
     total_weight = 0
+    animal_list = []
     def __init__(self, species: str, weight: int, age: int):
         self.species = species
         self.weight = weight
         self.age = age
         Animals.total_weight += self.weight
+        Animals.animal_list.append(self)
 
     def set_weight(self):
         Animals.total_weight -= self.weight
@@ -55,8 +57,14 @@ podivnost.print_info()
 print(podivnost)
 
 print(Animals.total_weight)
-velryba.set_weight()
+# velryba.set_weight()
 print(Animals.total_weight)
+
+print(Animals.animal_list)
+
+for weight in Animals.animal_list:
+    print(weight)
+
 
 
 #
