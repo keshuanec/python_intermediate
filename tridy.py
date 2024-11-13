@@ -53,6 +53,8 @@ class Pso_Ryba(Fish, Domestic_dog):
 
 # podivnost = Pso_Ryba("divnej",56, 22, "kokr", "ruzovy")
 
+
+zviratko = Animals("svinka", 1, 150)
 jelen = Mammal("kudu", 215, 14)
 pirana = Fish("pirana", 2, 3)
 vrabec = Bird("vrabec", 155, 2)
