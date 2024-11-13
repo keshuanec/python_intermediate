@@ -10,7 +10,7 @@ class Animals(ABC):
         Animals.total_weight += self.weight
         Animals.animal_list.append(self)
 
-    @abstractmethod
+    # @abstractmethod
     def set_weight(self):
         Animals.total_weight -= self.weight
         self.weight = int(input("zadejte aktualni vahu zvirete zaokrouhlenou na jednotky kg:"))
