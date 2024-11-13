@@ -1,4 +1,7 @@
+from abc import ABC, abstractmethod
+
 class Animals:
+    @abstractmethod
     total_weight = 0
     animal_list = []
     def __init__(self, species: str, weight: int, age: int):
@@ -64,7 +67,7 @@ velryba = Mammal("keporkak", 1252, 58)
 # print(Animals.animal_list)
 
 for animal in Animals.animal_list:
-    print(f"zvire {Animals.animal_list[0]} vazi {Animals.animal_list[1]}Kg.")
+    print(f"zvire {animal.species} vazi {animal.weight}Kg.")
 
 
 
