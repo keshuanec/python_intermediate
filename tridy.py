@@ -48,22 +48,23 @@ class Pso_Ryba(Fish, Domestic_dog):
     def __str__(self):
         return f"to je divne zvire. Jmenuje se {self.species}, vazi {self.weight}, je mu {self.age} let a je rasy {self.breed}. A navic je {self.coat_color}"
 
-podivnost = Pso_Ryba("divnej",56, 22, "kokr", "ruzovy")
+# podivnost = Pso_Ryba("divnej",56, 22, "kokr", "ruzovy")
 
-
+jelen = Mammal("kudu", 215, 14)
+pirana = Fish("pirana", 2, 3)
 vrabec = Bird("vrabec", 155, 2)
 velryba = Mammal("keporkak", 1252, 58)
-podivnost.print_info()
-print(podivnost)
+# podivnost.print_info()
+# print(podivnost)
+#
+# print(Animals.total_weight)
+# # velryba.set_weight()
+# print(Animals.total_weight)
+#
+# print(Animals.animal_list)
 
-print(Animals.total_weight)
-# velryba.set_weight()
-print(Animals.total_weight)
-
-print(Animals.animal_list)
-
-for weight in Animals.animal_list:
-    print(weight)
+for animal in Animals.animal_list:
+    print(f"zvire {Animals.animal_list[0]} vazi {Animals.animal_list[1]}Kg.")
 
 
 
