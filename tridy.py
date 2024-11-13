@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Animals:
+class Animals(ABC):
     total_weight = 0
     animal_list = []
     def __init__(self, species: str, weight: int, age: int):
@@ -10,7 +10,7 @@ class Animals:
         Animals.total_weight += self.weight
         Animals.animal_list.append(self)
 
-    @abstractmethod
+    # @abstractmethod
     def set_weight(self):
         Animals.total_weight -= self.weight
         self.weight = int(input("zadejte aktualni vahu zvirete zaokrouhlenou na jednotky kg:"))
@@ -54,7 +54,8 @@ class Pso_Ryba(Fish, Domestic_dog):
 # podivnost = Pso_Ryba("divnej",56, 22, "kokr", "ruzovy")
 
 
-zviratko = Animals("svinka", 1, 150)
+# zviratko = Animals("svinka", 1, 150)
+jezevcik = Domestic_dog("pes", 12, 4, "jezevcik", "hnedy")
 jelen = Mammal("kudu", 215, 14)
 pirana = Fish("pirana", 2, 3)
 vrabec = Bird("vrabec", 155, 2)
