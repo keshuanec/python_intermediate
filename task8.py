@@ -9,7 +9,7 @@ def with_password(func):
         return wrong_password
 
 def wrong_password(a,b):
-    print(f"vlozil jsi spatne heslo. Operace nebude provedena")
+    return f"spatne heslo"
 
 
 @with_password
