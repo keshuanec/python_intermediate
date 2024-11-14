@@ -2,13 +2,15 @@
 #pokud uživatel správně zadá heslo (využijte input()).
 
 def with_password(func):
-    def password_check():
-        password = "prase"
-        if input("vlozte heslo: ") == password:
-            return func
-        else:
-            print("zadal jste nespravne heslo")
-    return password_check()
+    password = "prase"
+    if input("vlozte heslo: ") == password:
+        return func
+    else:
+        return wrong_password
+
+def wrong_password(a,b):
+    print(f"vlozil jsi spatne heslo. Operace nebude provedena")
+
 
 @with_password
 def soucet(a,b):
