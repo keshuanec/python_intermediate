@@ -4,7 +4,7 @@
 print("test")
 def with_password(func):
     password = "prase"
-    if input("vlozte heslo") == password:
+    if input("vlozte heslo: ") == password:
         return func
     else:
         print("zadal jste nespravne heslo")
