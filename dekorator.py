@@ -6,34 +6,40 @@
 #     if input("vlozte heslo: ") == password:
 #         return func
 #     else:
-#         return wrong_password
+#         return "wrong_password"
 #
-# def wrong_password(a,b):
-#     return f"spatne heslo"
+
+
 #
-#
-# @with_password
-# def soucet(a,b):
-#     return a + b
-#
-#
-#
-#
-#
-# print(soucet(3,5))
 
 
 def with_password(func):
-    def novy_soucet(a, b):
-        password = "zirafa"
-        if input("vlozte heslo: ") == password:
-            return func(a, b)
+    def pass_protected(*args, **kwargs):
+        password = "prase"
+        if input(f"vlozte heslo pro funkci \"{func.__name__}\": ") == password:
+            return f"vysledek volani funkce \"{func.__name__}\" je: {func(*args, **kwargs)}"
         else:
-            return "Špatné heslo"
-    return novy_soucet
+            return f"Pro funkci \"{func.__name__}\" bylo zadano Špatné heslo"
+    return pass_protected
 
 @with_password
-def soucet(a,b):
+def soucetAB(a,b):
     return a + b
 
-print(soucet(3,5))
+@with_password
+def soucetABC(a,b,c):
+    return a+b+c
+
+@with_password
+def soucet_all(*args):
+    soucet = 0
+    for i in args:
+        soucet += i
+    return soucet
+
+
+
+
+print(soucetAB(3,5))
+print(soucetABC(3,4,5))
+print(soucet_all(5,2,4,3,4,8,5))
