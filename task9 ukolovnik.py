@@ -10,6 +10,8 @@
 # (Volitelně uložení i přes pickle)
 # Načíst poznámky ze souboru .csv (budeme vyzváni z jakého souboru)
 import csv
+import pickle
+
 
 
 
@@ -67,15 +69,23 @@ def ulozit(notes):
         for line in notes:
             writer.writerow([line])
 
+def ulozit_pickle(notes):
+    with open('data.pickle', 'wb') as f:
+        pickle.dump(notes, f)
+
+
 def nacist():
     file_csv = input("zadejte nazev souboru k nacteni: ")
     with open(file_csv, 'r', encoding="utf-8", newline="") as work_file:
         reader = csv.reader(work_file)
         for line in reader:
-            notes.append(line)
-        print(notes)
+            notes.extend(line)
 
 
+def nacist_pickle():
+    with open('data.pickle', 'rb') as f:
+        notes = pickle.load(f)
+    return notes
 
 
 seznam_operaci = "seznam moznych operaci: pridat, vypsat, smazat, upravit, ulozit, nacist"   #"Přidat poznámku (nakonec) - \"pridat\"\nVypsat všechny poznámky - \"vypsat\"\nSmazat poznámku (budeme vyzváni, jaký řádek smazat - \"smazat\"\nUpravit poznámku (budeve vyzváni, jaký řádek a jak upravit) - \"upravit\"\nUložit poznámky do souboru .csv (budeme vyzváni do jakého souboru) - \"ulozit\"\nNačíst poznámky ze souboru .csv (budeme vyzváni z jakého souboru) - \"nacist\"\nUkončit ukolovnik - \"ukoncit\""
@@ -95,6 +105,13 @@ while operace != "ukoncit":
         ulozit(notes)
     elif operace == "nacist":
         nacist()
+    elif operace == "ulozit_pickle":
+        ulozit_pickle(notes)
+    elif operace == "nacist_pickle":
+        notes = nacist_pickle()
+    elif operace == "ukoncit":
+        print("Diky za pouziti. Program se ukoncuje.")
+        break
     else:
         print("neznama operace")
 
