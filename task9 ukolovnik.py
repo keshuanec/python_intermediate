@@ -11,12 +11,9 @@
 # Načíst poznámky ze souboru .csv (budeme vyzváni z jakého souboru)
 import csv
 import pickle
-
-
-
+import json
 
 notes = []
-
 
 
 def pridat():
@@ -27,6 +24,7 @@ def pridat():
     """
     return f"{input("vloz poznamku: ")}"
 
+
 def vypsat(notes):
     """
     vypise obsah aktualniho pracovniho prostoru
@@ -35,6 +33,7 @@ def vypsat(notes):
     """
     for line in notes:
         print(line)
+
 
 def smazat(notes):
     """
@@ -47,6 +46,7 @@ def smazat(notes):
     notes.pop(del_row)
     return notes
 
+
 def upravit(notes):
     """
     nahradi zvoleny radek jinym textem
@@ -57,6 +57,7 @@ def upravit(notes):
     edit_row = int(input("ktery radek chcete upravit? Zadejte jeho poradi: ")) - 1
     notes[edit_row] = input(f"zadejte novy text do radku {edit_row + 1}: ")
     return notes
+
 
 def ulozit(notes):
     file = input("zadejte nazev souboru csv: ")
@@ -69,9 +70,25 @@ def ulozit(notes):
         for line in notes:
             writer.writerow([line])
 
+
 def ulozit_pickle(notes):
-    with open('data.pickle', 'wb') as f:
+    file = input("zadejte nazev souboru .pickle: ")
+    if ".pickle" in file:
+        file_pickle = file
+    else:
+        file_pickle = file + ".pickle"
+    with open(file_pickle, 'wb') as f:
         pickle.dump(notes, f)
+
+
+def ulozit_json(notes):
+    file = input("zadejte nazev souboru .json: ")
+    if ".json" in file:
+        file_json = file
+    else:
+        file_json = file + ".json"
+    with open(file_json, 'w') as out_file:
+        json.dump(notes, out_file, indent=2)
 
 
 def nacist():
@@ -83,16 +100,24 @@ def nacist():
 
 
 def nacist_pickle():
-    with open('data.pickle', 'rb') as f:
+    file_pickle = input("zadejte nazev souboru k nacteni: ")
+    with open(file_pickle, 'rb') as f:
         notes = pickle.load(f)
     return notes
 
 
-seznam_operaci = "seznam moznych operaci: pridat, vypsat, smazat, upravit, ulozit, nacist"   #"Přidat poznámku (nakonec) - \"pridat\"\nVypsat všechny poznámky - \"vypsat\"\nSmazat poznámku (budeme vyzváni, jaký řádek smazat - \"smazat\"\nUpravit poznámku (budeve vyzváni, jaký řádek a jak upravit) - \"upravit\"\nUložit poznámky do souboru .csv (budeme vyzváni do jakého souboru) - \"ulozit\"\nNačíst poznámky ze souboru .csv (budeme vyzváni z jakého souboru) - \"nacist\"\nUkončit ukolovnik - \"ukoncit\""
+def nacist_json():
+    file_json = input("zadejte nazev souboru .json k nacteni: ")
+    with open(file_json) as in_file:
+        return json.load(in_file)
+
+
+seznam_operaci = "seznam moznych operaci: pridat, vypsat, smazat, upravit, ulozit, nacist"  # "Přidat poznámku (nakonec) - \"pridat\"\nVypsat všechny poznámky - \"vypsat\"\nSmazat poznámku (budeme vyzváni, jaký řádek smazat - \"smazat\"\nUpravit poznámku (budeve vyzváni, jaký řádek a jak upravit) - \"upravit\"\nUložit poznámky do souboru .csv (budeme vyzváni do jakého souboru) - \"ulozit\"\nNačíst poznámky ze souboru .csv (budeme vyzváni z jakého souboru) - \"nacist\"\nUkončit ukolovnik - \"ukoncit\""
 
 operace = ""
 while operace != "ukoncit":
-    operace = input(f"{seznam_operaci}\n\nZapsáním klíčového slova uvedeneho v seznamu vyse vyberte požadovanou operaci: ")
+    operace = input(
+        f"{seznam_operaci}\n\nZapsáním klíčového slova uvedeneho v seznamu vyse vyberte požadovanou operaci: ")
     if operace == "pridat":
         notes.append(pridat())
     elif operace == "vypsat":
@@ -109,13 +134,15 @@ while operace != "ukoncit":
         ulozit_pickle(notes)
     elif operace == "nacist_pickle":
         notes = nacist_pickle()
+    elif operace == "ulozit_json":
+        ulozit_json(notes)
+    elif operace == "nacist_json":
+        notes = nacist_json()
     elif operace == "ukoncit":
         print("Diky za pouziti. Program se ukoncuje.")
         break
     else:
         print("neznama operace")
-
-
 
 # soubor = input("zadejte nazev souboru s priponou .csv")
 # with open(soubor)
