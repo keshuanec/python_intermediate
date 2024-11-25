@@ -70,7 +70,8 @@ def ulozit(notes):
 def nacist():
     file_csv = input("zadejte nazev souboru k nacteni: ")
     with open(file_csv, 'r', encoding="utf-8", newline="") as work_file:
-        for line in work_file:
+        reader = csv.reader(file_csv)
+        for line in reader:
             notes.append(line)
         print(notes)
 
