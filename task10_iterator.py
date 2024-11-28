@@ -13,13 +13,12 @@ class IteratorMocnin:
 
     def __next__(self):
         self.generated_numbers += 1
-        if self.generated_numbers > self.n:
-            raise StopIteration
-
+        if self.generated_numbers <= self.n:
+            self.number += 1
+            return (self.number - 1) * (self.number - 1)
 
         else:
-            self.number += 1
-            return self.number ** 2
+            raise StopIteration
 
 
 mocniny = IteratorMocnin(5)
