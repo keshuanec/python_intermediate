@@ -21,31 +21,6 @@ class IteratorMocnin:
             raise StopIteration
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 mocniny = IteratorMocnin(5)
 for mocnina in mocniny:
     print(mocnina)
