@@ -2,6 +2,8 @@
 # Albert - máme koncovku "bert".
 # před tu koncovku budou dávány předpony "Al", "Ro", "Hu", "Nor", "Gil"
 
+
+
 def GeneratorJmen(pred, konc):
     for pre_word in pred:
         yield pre_word + konc
