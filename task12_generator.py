@@ -10,8 +10,8 @@ def GeneratorJmen(pred, konc):
 
     pass
 
-predpony = ["Al", "Ro", "Hu", "Nor", "Gil"]
-koncovka = "bert"
+predpony = ["Jir", "Sir", "Pil", "Bur", "Kul"]
+koncovka = "ka"
 for jmeno in GeneratorJmen(predpony, koncovka):
     print(f"Tvé jméno je {jmeno}") # Albert, Robert, Hubert, Norbert, Gilbert
 
