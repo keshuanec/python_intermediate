@@ -59,7 +59,7 @@ if __name__ == "__main__":
     t2.start()
 
     print(f"vysledek_scitani = {t1.join()}")
-    print(f"vysledek_scitani = {t2.join()}")
+    print(f"vysledek_nasobeni = {t2.join()}")
 
 
 
