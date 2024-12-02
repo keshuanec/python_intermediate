@@ -38,34 +38,30 @@ class ThreadWithReturnValue(threading.Thread):
         super().join(timeout)
         return self.result
 
-def scitani():
+def scitani(num):
     vysledek_scitani = 0
-    for i in range(1000000):
+    for i in range(num):
         vysledek_scitani += i
     return vysledek_scitani
 
-def nasobeni():
+def nasobeni(num):
     vysledek_nasobeni = 1
-    for i in range(1,100):
+    for i in range(1,num):
         vysledek_nasobeni *= i
     return vysledek_nasobeni
 
 
 if __name__ == "__main__":
-    t1 = ThreadWithReturnValue(target=scitani)
-    t2 = ThreadWithReturnValue(target=nasobeni)
+    t1 = ThreadWithReturnValue(target=scitani, args=(1000000,))
+    t2 = ThreadWithReturnValue(target=nasobeni, args=(100,))
 
     t1.start()
     t2.start()
 
-    print(t1.join())
-    print(t2.join())
+    print(f"vysledek_scitani = {t1.join()}")
+    print(f"vysledek_scitani = {t2.join()}")
 
 
 
 
-
-#
-# vysledek_scitani =
-# vysledek_nasobeni =
 
