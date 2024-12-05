@@ -1,5 +1,4 @@
 .idea/
-.gitignore
 /data.pickle
 /dieta.csv
 /dieta.json
