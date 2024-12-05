@@ -1,2 +1,7 @@
 .idea/
 .gitignore
+/data.pickle
+/dieta.csv
+/dieta.json
+/with_threads.txt
+/without_threads.txt
